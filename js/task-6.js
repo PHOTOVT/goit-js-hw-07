@@ -16,15 +16,16 @@ function createBoxes() {
 
   destroyBoxes();
 
-  let size = 30;
-  for (let i = 0; i < amount; i++) {
+  const boxesArray = Array.from({ length: amount }, (_, index) => {
+    const size = 30 + index * 10;
     const box = document.createElement('div');
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxes.appendChild(box);
-    size += 10;
-  }
+    return box;
+  });
+
+  boxes.append(...boxesArray);
 
   input.value = '';
 }
